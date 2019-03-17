@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>Taquilla</title>
+	<link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+
+<div class="body-content">
+  <div class="module">
+    <h1>Crear cuenta</h1>
+    <class="form" action="form.php" method="post" enctype="multipart/form-data" autocomplete="off">
+      <div class="alert alert-error"></div>
+      <input id="Usuario" type="text" placeholder="Usuario" name="username" required />
+      <input id="correo" type="email" placeholder="Correo" name="email" required />
+      <input id="clave" type="password" placeholder="Contraseña" name="password" autocomplete="new-password" required />
+      <div class="avatar"><label>Selecciona tu foto: <br><br></label><input id = "imagen" type="file" name="avatar" accept="image/*" required /></div>
+      <input type="submit" value="Registrarse" name="register" class="" id="guardar" onclick="botonguardarclick()"/>
+
+  </div>
+</div>
+
+    <script src="jquery/jquery-3.2.1.min.js"></script>
+    <script src="frontend/clase_administrador.js"></script>
+    <script type="text/javascript">
+
+
+   function botonguardarclick() //  Despues de presionar el boton, se viene aqui donde obtiene los valores
+       {
+           var usuarioinstanciado = new administrador(0, //  Un objeto con todos los atributos que le agrega el usuario
+           document.getElementById("Usuario").value,
+					 "",
+					 "",
+            document.getElementById("correo").value,
+						imagenenbase64,
+           "",
+					 "",
+					 ""
+           );
+
+           usuarioinstanciado.Guardar().then(function(response) {
+console.log("Success!", response);
+       alert("Guardado con exito");
+
+}, function(error) {
+console.error("Failed!", error);
+        alert("Error " + error);
+
+});
+}
+</script>
+
+</body>
+</html>
